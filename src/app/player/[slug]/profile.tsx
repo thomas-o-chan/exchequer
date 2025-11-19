@@ -19,6 +19,7 @@ export function ProfileSection({ profile, countryName }: ProfileSectionProps) {
       </h1>
       <div className={styles.avatar}>
         <Image
+          loading="lazy"
           src={profile.avatar || "/default-avatar.png"}
           alt={`${profile.username}'s avatar`}
           width={200}
