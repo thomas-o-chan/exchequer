@@ -1,30 +1,56 @@
-'use client';
+"use client";
 
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import styles from "../../page.module.css";
-import { PlayerData } from "../types";
+import styles from "./player.module.css";
+import { PlayerInfo } from "../types";
 
 export default function Player() {
   const params = useParams();
-  const [playerData, setPlayerData] = useState<PlayerData | null>(null);
+  const [playerData, setPlayerData] = useState<PlayerInfo | null>(null);
 
   useEffect(() => {
     (async () => {
       const data = await getPlayerData(params.slug as string);
       setPlayerData(data);
     })();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className={styles.page}>
-      <main className={styles.main}>{JSON.stringify(playerData)}</main>
+      <main className={styles.main}>
+        <PlayerData data={playerData} />
+      </main>
     </div>
   );
 }
 
-async function getPlayerData(slug: string): Promise<PlayerData> {
+async function getPlayerData(slug: string): Promise<PlayerInfo> {
   const res = await fetch(`/api/player-data/${slug}`, { method: "GET" });
   return await res.json();
+}
+
+function PlayerData({ data }: { data: PlayerInfo | null }) {
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+  return (
+    <div>
+      <h1>
+        {data.name} {data.title ? `(${data.title})` : ""}
+      </h1>
+      <div className={styles.line}>Username: {data.username}</div>
+      <div className={styles.line}>Location: {data.location || "N/A"}</div>
+      <div className={styles.line}>Country: {data.country || "N/A"}</div>
+      <div className={styles.line}>Followers: {data.followers}</div>
+      <div className={styles.line}>Status: {data.status}</div>
+      <div className={styles.line}>
+        Joined: {new Date(data.joined * 1000).toLocaleDateString()}
+      </div>
+      <div className={styles.line}>
+        Last Online: {new Date(data.last_online * 1000).toLocaleDateString()}
+      </div>
+    </div>
+  );
 }
