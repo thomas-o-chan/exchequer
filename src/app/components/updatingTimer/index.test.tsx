@@ -23,7 +23,8 @@ describe("getTimeDifferenceFromNow", () => {
   global.Date.now = vi.fn(() => 1000);
 
   it("returns the difference between now and the given past time", () => {
-    const result = getTimeDifferenceFromNow(1002);
-    expect(result).toBe(2);
+    // Takes time in secs, but returns difference in ms
+    const result = getTimeDifferenceFromNow(2);
+    expect(result).toBe(1000);
   });
 });

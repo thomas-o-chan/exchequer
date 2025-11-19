@@ -37,13 +37,19 @@
 
 @media (max-width: 600px) {
   .main {
-    padding: 48px 24px;
+    padding: 40px 24px;
   }
 }
 
 @media (max-height: 600px) {
   .main {
-    padding: 24px 48px;
+    padding: 24px 40px;
+  }
+}
+
+@media (max-height: 600px) and (max-width: 600px) {
+  .main {
+    padding: 24px 24px;
   }
 }
 
