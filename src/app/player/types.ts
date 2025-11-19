@@ -1,4 +1,4 @@
-export interface PlayerData {
+export interface PlayerInfo {
   avatar?: string;
   player_id: number;
   "@id": string;

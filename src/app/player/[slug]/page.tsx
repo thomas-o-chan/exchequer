@@ -7,6 +7,7 @@ import { PlayerInfo } from "../types";
 import { Loading } from "@/app/components/loading";
 import { getHMS } from "./formatDate";
 import { UpdatingTimer } from "@/app/components/updatingTimer";
+import { Header } from "@/app/components/header";
 
 export default function Player() {
   const params = useParams();
@@ -22,6 +23,7 @@ export default function Player() {
 
   return (
     <div className={styles.page}>
+      <Header title={params.slug as string} />
       <main className={styles.main}>
         <PlayerData data={playerData} />
       </main>

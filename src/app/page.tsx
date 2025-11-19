@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "./components/button";
+import { Header } from "./components/header";
 import { Loading } from "./components/loading";
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
@@ -18,6 +19,7 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
+      <Header title="Exchequer" />
       <main className={styles.main}>
         <h1>Grand Masters</h1>
         {grandMasters.length > 0 ? (
