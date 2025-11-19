@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "./components/button";
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 
@@ -8,7 +9,7 @@ export default function Home() {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch("api/list-gm", { method: 'GET'});
+      const res = await fetch("api/list-gm", { method: "GET" });
       const newGMs = await res.json();
       setGrandMasters(newGMs);
     })();
@@ -16,7 +17,24 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
-      <main className={styles.main}>{JSON.stringify(grandMasters)}</main>
+      <main className={styles.main}>
+        <h1>Grand Masters</h1>
+        <DataTable data={grandMasters} />
+      </main>
+    </div>
+  );
+}
+
+function DataTable({ data }: { data: string[] }) {
+  return (
+    <div>
+      {data.map((entry) => {
+        return (
+          <div key={entry} className={styles.table_entry}>
+            <div>{entry}</div>
+          </div>
+        );
+      })}
     </div>
   );
 }
