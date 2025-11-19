@@ -4,7 +4,6 @@ export interface PlayerInfo {
   countryName?: string;
 }
 
-
 export interface PlayerProfileInfo {
   avatar?: string;
   player_id: number;
@@ -30,15 +29,13 @@ export interface PlayerStatsInfo {
   chess_rapid?: StatsObject;
   chess_bullet?: StatsObject;
   chess_blitz?: StatsObject;
-  tactics: {
-    highest: {
-      rating: number;
-      date: number;
-    };
-    lowest: {
-      rating: number;
-      date: number;
-    };
+  tactics?: {
+    highest: DatedRating;
+    lowest: DatedRating;
+  };
+  lessons?: {
+    highest: DatedRating;
+    lowest: DatedRating;
   };
   puzzle_rush?: {
     best: {
@@ -67,4 +64,9 @@ export interface StatsObject {
     time_per_move: number;
     timeout_percent: number;
   };
+}
+
+export interface DatedRating {
+  date: number;
+  rating: number;
 }

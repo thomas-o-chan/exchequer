@@ -4,6 +4,7 @@
   --primary: #2650aa;
   --primary-light: #3b6edc;
   --primary-contrast: #fff;
+  --text-link: #3b6edc;
 
   --header-height: 60px;
 }
@@ -36,7 +37,7 @@ body {
 }
 
 a {
-  color: inherit;
+  color: var(--text-link);
   text-decoration: none;
 }
 

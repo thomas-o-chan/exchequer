@@ -1,4 +1,4 @@
-import { PlayerInfo, PlayerProfileInfo, PlayerStatsInfo } from "@/app/player/types";
+import { PlayerInfo, PlayerProfileInfo, PlayerStatsInfo } from "@/app/types";
 
 export async function GET(
   _request: Request,
