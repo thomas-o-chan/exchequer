@@ -26,9 +26,10 @@ export interface PlayerProfileInfo {
 
 export interface PlayerStatsInfo {
   chess_daily?: StatsObject;
+  chess960_daily?: StatsObject;
+  chess_blitz?: StatsObject;
   chess_rapid?: StatsObject;
   chess_bullet?: StatsObject;
-  chess_blitz?: StatsObject;
   tactics?: {
     highest: DatedRating;
     lowest: DatedRating;

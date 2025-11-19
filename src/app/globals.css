@@ -5,6 +5,7 @@
   --primary-light: #3b6edc;
   --primary-contrast: #fff;
   --text-link: #3b6edc;
+  --text-link-hover: #6896f9;
 
   --header-height: 60px;
 }
@@ -39,6 +40,11 @@ body {
 a {
   color: var(--text-link);
   text-decoration: none;
+}
+
+a:hover {
+  color: var(--text-link-hover);
+  text-decoration: underline;
 }
 
 @media (prefers-color-scheme: dark) {

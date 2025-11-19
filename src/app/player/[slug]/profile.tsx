@@ -12,7 +12,7 @@ interface ProfileSectionProps {
 
 export function ProfileSection({ profile, countryName }: ProfileSectionProps) {
   return (
-    <section>
+    <section className={styles.section}>
       <h1>
         {profile.name}
         {profile.title ? ` (${profile.title})` : ""}

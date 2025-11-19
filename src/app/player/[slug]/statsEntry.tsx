@@ -1,5 +1,7 @@
 import { StatsObject } from "@/app/types";
 
+import styles from "./stats.module.css";
+
 interface StatSectionProps {
   name: string;
   stats: StatsObject;
@@ -7,12 +9,12 @@ interface StatSectionProps {
 
 export function StatsEntry({ name, stats }: StatSectionProps) {
   return (
-    <div>
+    <div className={styles.stats_entry}>
       <h3>{name}</h3>
       <div>Last Rating: {stats.last.rating}</div>
       <div>
         Best Rating: {stats.best.rating}
-        <a href={stats.best.game} target="_blank" rel="noopener noreferrer">
+        <a className={styles.link} href={stats.best.game} target="_blank" rel="noopener noreferrer">
           See game
         </a>
       </div>

@@ -1,7 +1,17 @@
-.stats_section {
+.section {
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding-bottom: 10px;
+}
+
+.stats_entry {
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.link {
+  padding: 0px 3px;
 }
