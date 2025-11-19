@@ -32,7 +32,7 @@ export default function Player() {
 }
 
 async function getPlayerData(slug: string): Promise<PlayerInfo> {
-  const res = await fetch(`/api/player-data/${slug}`, { method: "GET" });
+  const res = await fetch(`/api/player/${slug}`, { method: "GET" });
   return await res.json();
 }
 
