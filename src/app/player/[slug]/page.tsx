@@ -6,6 +6,7 @@ import styles from "./player.module.css";
 import { PlayerInfo } from "../types";
 import { Loading } from "@/app/components/loading";
 import { getHMS } from "./formatDate";
+import { UpdatingTimer } from "@/app/components/updatingTimer";
 
 export default function Player() {
   const params = useParams();
@@ -52,7 +53,7 @@ function PlayerData({ data }: { data: PlayerInfo | null }) {
         Joined: {new Date(data.joined * 1000).toLocaleDateString()} GMT
       </div>
       <div className={styles.line}>
-        Time since last online: {getHMS(Date.now() - data.last_online)}
+        Time since last online: <UpdatingTimer time={data.last_online} getDisplayTime={getHMS} />
       </div>
     </div>
   );
