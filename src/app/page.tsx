@@ -1,6 +1,7 @@
 "use client";
 
-import Button from "./components/button";
+import { Button } from "./components/button";
+import { Loading } from "./components/loading";
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 
@@ -19,7 +20,11 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <h1>Grand Masters</h1>
-        <DataTable data={grandMasters} />
+        {grandMasters.length > 0 ? (
+          <DataTable data={grandMasters} />
+        ) : (
+          <Loading />
+        )}
       </main>
     </div>
   );

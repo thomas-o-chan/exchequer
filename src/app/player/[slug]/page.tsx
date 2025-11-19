@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./player.module.css";
 import { PlayerInfo } from "../types";
+import { Loading } from "@/app/components/loading";
 
 export default function Player() {
   const params = useParams();
@@ -33,7 +34,7 @@ async function getPlayerData(slug: string): Promise<PlayerInfo> {
 
 function PlayerData({ data }: { data: PlayerInfo | null }) {
   if (!data) {
-    return <div>Loading...</div>;
+    return <Loading/>;
   }
   return (
     <div>
