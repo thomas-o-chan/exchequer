@@ -32,6 +32,7 @@ function DataTable({ data }: { data: string[] }) {
         return (
           <div key={entry} className={styles.table_entry}>
             <div>{entry}</div>
+            <Button link={`player/${entry}`}>Profile</Button>
           </div>
         );
       })}
