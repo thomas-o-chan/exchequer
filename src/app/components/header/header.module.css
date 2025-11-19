@@ -1,0 +1,32 @@
+.wrapper {
+  width: 100vw;
+  height: var(--header-height);
+  min-height: var(--header-height);
+  background: var(--primary);
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  flex: 0;
+  transition: all ease 0.1s;
+}
+
+.home_icon {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: var(--header-height);
+  height: var(--header-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-primary);
+}
