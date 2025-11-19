@@ -8,6 +8,7 @@ import { Loading } from "@/app/components/loading";
 import { getHMS } from "./formatDate";
 import { UpdatingTimer } from "@/app/components/updatingTimer";
 import { Header } from "@/app/components/header";
+import Image from "next/image";
 
 export default function Player() {
   const params = useParams();
@@ -47,6 +48,14 @@ function PlayerData({ data }: { data: PlayerInfo | null }) {
         {profile.name}
         {profile.title ? ` (${profile.title})` : ""}
       </h1>
+      <div className={styles.avatar}>
+        <Image
+          src={profile.avatar || "/default-avatar.png"}
+          alt={`${profile.username}'s avatar`}
+          width={200}
+          height={200}
+        />
+      </div>
       <div className={styles.line}>Username: {profile.username}</div>
       <div className={styles.line}>Location: {profile.location || "N/A"}</div>
       <div className={styles.line}>
