@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import styles from "./player.module.css";
 import { PlayerInfo } from "../types";
 import { Loading } from "@/app/components/loading";
+import { getHMS } from "./formatDate";
 
 export default function Player() {
   const params = useParams();
@@ -34,12 +35,13 @@ async function getPlayerData(slug: string): Promise<PlayerInfo> {
 
 function PlayerData({ data }: { data: PlayerInfo | null }) {
   if (!data) {
-    return <Loading/>;
+    return <Loading />;
   }
   return (
     <div>
       <h1>
-        {data.name} {data.title ? `(${data.title})` : ""}
+        {data.name}
+        {data.title ? ` (${data.title})` : ""}
       </h1>
       <div className={styles.line}>Username: {data.username}</div>
       <div className={styles.line}>Location: {data.location || "N/A"}</div>
@@ -47,10 +49,10 @@ function PlayerData({ data }: { data: PlayerInfo | null }) {
       <div className={styles.line}>Followers: {data.followers}</div>
       <div className={styles.line}>Status: {data.status}</div>
       <div className={styles.line}>
-        Joined: {new Date(data.joined * 1000).toLocaleDateString()}
+        Joined: {new Date(data.joined * 1000).toLocaleDateString()} GMT
       </div>
       <div className={styles.line}>
-        Last Online: {new Date(data.last_online * 1000).toLocaleDateString()}
+        Time since last online: {getHMS(Date.now() - data.last_online)}
       </div>
     </div>
   );
