@@ -9,10 +9,10 @@ describe("searchFilter", () => {
   });
   it("should remove all items that do not include the search term", () => {
     const result = searchFilter(items, "Foo");
-    expect(result).not.toContain(["Apple"]);
+    expect(result).not.toContain("Apple");
   });
   it("should be case insensitive", () => {
     const result = searchFilter(items, "Ap");
-    expect(result).toContain(["apricot"]);
+    expect(result).toContain("apricot");
   });
 });
