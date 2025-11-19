@@ -40,22 +40,26 @@ function PlayerData({ data }: { data: PlayerInfo | null }) {
   if (!data) {
     return <Loading />;
   }
+  const { profile, countryName } = data;
   return (
     <div>
       <h1>
-        {data.name}
-        {data.title ? ` (${data.title})` : ""}
+        {profile.name}
+        {profile.title ? ` (${profile.title})` : ""}
       </h1>
-      <div className={styles.line}>Username: {data.username}</div>
-      <div className={styles.line}>Location: {data.location || "N/A"}</div>
-      <div className={styles.line}>Country: {data.country || "N/A"}</div>
-      <div className={styles.line}>Followers: {data.followers}</div>
-      <div className={styles.line}>Status: {data.status}</div>
+      <div className={styles.line}>Username: {profile.username}</div>
+      <div className={styles.line}>Location: {profile.location || "N/A"}</div>
       <div className={styles.line}>
-        Joined: {new Date(data.joined * 1000).toLocaleDateString()} GMT
+        Country: {countryName || profile.country || "N/A"}
+      </div>
+      <div className={styles.line}>Followers: {profile.followers}</div>
+      <div className={styles.line}>Status: {profile.status}</div>
+      <div className={styles.line}>
+        Joined: {new Date(profile.joined * 1000).toLocaleDateString()} GMT
       </div>
       <div className={styles.line}>
-        Time since last online: <UpdatingTimer time={data.last_online} getDisplayTime={getHMS} />
+        Time since last online:{" "}
+        <UpdatingTimer time={profile.last_online} getDisplayTime={getHMS} />
       </div>
     </div>
   );
