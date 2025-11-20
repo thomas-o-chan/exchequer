@@ -1,6 +1,6 @@
 import styles from "./searchinput.module.css";
 
-export function SearchFilter({
+export function SearchInput({
   setSearchFilter,
 }: {
   setSearchFilter: (filter: string) => void;

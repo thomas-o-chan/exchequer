@@ -3,7 +3,7 @@
 import { Button } from "./components/button";
 import { Header } from "./components/header";
 import { Loading } from "./components/loading";
-import { SearchFilter } from "./components/searchInput";
+import { SearchInput } from "./components/searchInput";
 import { searchFilter } from "./lib/filter";
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
@@ -27,7 +27,7 @@ export default function Home() {
       <Header title="Exchequer" />
       <main className={styles.main}>
         <h1>Grand Masters</h1>
-        <SearchFilter setSearchFilter={setSearchTerm} />
+        <SearchInput setSearchFilter={setSearchTerm} />
         {grandMasters.length > 0 ? (
           <DataTable data={grandMasters} visible={filteredGrandMasters} />
         ) : (
