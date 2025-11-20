@@ -29,7 +29,7 @@ export default function Home() {
         <h1>Grand Masters</h1>
         <SearchFilter setSearchFilter={setSearchTerm} />
         {grandMasters.length > 0 ? (
-          <DataTable data={filteredGrandMasters} />
+          <DataTable data={grandMasters} visible={filteredGrandMasters} />
         ) : (
           <Loading />
         )}
@@ -38,12 +38,19 @@ export default function Home() {
   );
 }
 
-function DataTable({ data }: { data: string[] }) {
+function DataTable({ data, visible }: { data: string[]; visible: string[] }) {
   return (
     <div>
       {data.map((entry) => {
         return (
-          <div key={entry} className={styles.table_entry}>
+          <div
+            key={entry}
+            className={
+              visible.includes(entry)
+                ? styles.table_entry
+                : styles.table_entry_hidden
+            }
+          >
             <div>{entry}</div>
             <Button link={`player/${entry}`}>Profile</Button>
           </div>
