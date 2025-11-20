@@ -9,3 +9,18 @@
 .message {
   font-size: 1.5rem;
 }
+
+.spinning {
+  font-size: 80px;
+  animation: spin 1s linear infinite;
+  padding-bottom: 6px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
