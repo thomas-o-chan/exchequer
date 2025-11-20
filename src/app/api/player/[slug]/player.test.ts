@@ -34,7 +34,7 @@ const mockFetch = vi.fn(() =>
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 global.fetch = mockFetch as any;
 
-describe("GET /api/player-data/[slug]", async () => {
+describe("GET /api/player/[slug]", async () => {
   it("should return data in the correct format", async () => {
     const response = await GET(new Request("https://example.com"), {
       params: new Promise<{ slug: string }>((resolve) =>

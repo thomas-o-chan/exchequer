@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styles from "./updatingTimer.module.css";
-import { getHMS } from "@/app/player/[slug]/formatDate";
+import { getHMS } from "./formatDate";
 
 interface UpdatingTimerProps {
   /** The time to calculate the difference from, in seconds */
