@@ -41,3 +41,4 @@ The app has been designed to be largely accessible, conforming to a11y best prac
 - More colocated documentation
 - Data validation
 - File and code cleanup
+- SEO optimisation
