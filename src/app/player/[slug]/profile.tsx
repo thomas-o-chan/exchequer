@@ -41,8 +41,7 @@ export function ProfileSection({ profile, countryName }: ProfileSectionProps) {
         Joined: {new Date(profile.joined * 1000).toLocaleDateString()} GMT
       </div>
       <div className={styles.line}>
-        Time since last online:{" "}
-        <UpdatingTimer time={profile.last_online} />
+        Time since last online: <UpdatingTimer time={profile.last_online} />
       </div>
     </section>
   );
