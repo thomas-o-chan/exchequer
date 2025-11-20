@@ -9,7 +9,7 @@ export function Header({ title }: HeaderProps) {
   return (
     <header className={styles.wrapper}>
       <div className={styles.home_icon_link}>
-        <Link href="/"><span className={styles.home_icon}>♜</span></Link>
+        <Link className={styles.home_icon_link} href="/"><span className={styles.home_icon}>♜</span></Link>
       </div>
       <h1 className={styles.title}>{title}</h1>
     </header>

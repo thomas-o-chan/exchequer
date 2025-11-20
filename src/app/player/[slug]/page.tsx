@@ -1,7 +1,3 @@
-"use client";
-
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import styles from "./player.module.css";
 import { PlayerInfo } from "../../types";
 import { Loading } from "@/app/components/loading";
@@ -9,21 +5,17 @@ import { Header } from "@/app/components/header";
 import { Stats } from "./stats";
 import { ProfileSection } from "./profile";
 
-export default function Player() {
-  const params = useParams();
-  const [playerData, setPlayerData] = useState<PlayerInfo | null>(null);
-
-  useEffect(() => {
-    (async () => {
-      const data = await getPlayerData(params.slug as string);
-      setPlayerData(data);
-    })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+export default async function Player({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const playerData = await getPlayerData(slug);
 
   return (
     <div className={styles.page}>
-      <Header title={params.slug as string} />
+      <Header title={slug as string} />
       <main className={styles.main}>
         <PlayerData data={playerData} />
       </main>
@@ -32,7 +24,9 @@ export default function Player() {
 }
 
 async function getPlayerData(slug: string): Promise<PlayerInfo> {
-  const res = await fetch(`/api/player/${slug}`, { method: "GET" });
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
+  const res = await fetch(`${baseUrl}/api/player/${slug}`, { method: "GET" });
   return await res.json();
 }
 

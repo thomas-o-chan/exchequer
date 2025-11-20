@@ -3,7 +3,6 @@ import Image from "next/image";
 
 import styles from "./player.module.css";
 import { UpdatingTimer } from "@/app/components/updatingTimer";
-import { getHMS } from "./formatDate";
 
 interface ProfileSectionProps {
   profile: PlayerProfileInfo;
@@ -43,7 +42,7 @@ export function ProfileSection({ profile, countryName }: ProfileSectionProps) {
       </div>
       <div className={styles.line}>
         Time since last online:{" "}
-        <UpdatingTimer time={profile.last_online} getDisplayTime={getHMS} />
+        <UpdatingTimer time={profile.last_online} />
       </div>
     </section>
   );

@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from "react";
 import styles from "./updatingTimer.module.css";
+import { getHMS } from "@/app/player/[slug]/formatDate";
 
 interface UpdatingTimerProps {
   /** The time to calculate the difference from, in seconds */
   time: number;
-  getDisplayTime: (time: number) => string;
 }
 /** Displays a timer that displays the difference between the given time and now, updating every second */
-export function UpdatingTimer({ time, getDisplayTime }: UpdatingTimerProps) {
+export function UpdatingTimer({ time }: UpdatingTimerProps) {
   const [duration, setDuration] = useState<number>(
     getTimeDifferenceFromNow(time)
   );
@@ -23,9 +23,7 @@ export function UpdatingTimer({ time, getDisplayTime }: UpdatingTimerProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (
-    <span className={styles.timer}>{getDisplayTime(duration) || duration}</span>
-  );
+  return <span className={styles.timer}>{getHMS(duration) || duration}</span>;
 }
 
 export function getDifference(a: number, b: number): number {
