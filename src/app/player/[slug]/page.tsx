@@ -5,6 +5,8 @@ import { Header } from "@/app/components/header";
 import { Stats } from "./stats";
 import { ProfileSection } from "./profile";
 
+// Note, this was originally a server component, and while it builds successfully locally,
+// on Vercel it throws an internal server error.
 export default async function Player({
   params,
 }: {
